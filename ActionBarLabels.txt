@@ -1,0 +1,9 @@
+## Title: ActionBarLabels
+## Author: CMDR Mitchcraft
+## Version: 1.0
+## APIVersion: 100035 100036
+## Description: Adds a customizable label above the action bar
+## DependsOn: LibAddonMenu-2.0
+## SavedVariables: ActionBarLabelsSV
+
+ActionBarLabels.lua
