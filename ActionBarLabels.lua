@@ -1,7 +1,7 @@
 -- ActionBarLabels Addon
 -- Adds a label above the action bar with customizable text
 
-local ADDON_NAME = "ActionBarLabels"
+local ACTIONBARLABELS = "ActionBarLabels"
 local LAM = LibAddonMenu2
 
 -- Default saved variables
@@ -89,7 +89,7 @@ local function CreateLabel()
     local wm = GetWindowManager()
     
     -- Try creating as child of action bar first (most reliable)
-    local labelName = ADDON_NAME .. "_Label"
+    local labelName = ACTIONBARLABELS .. "_Label"
     local label = wm:CreateControl(labelName, actionBar, CT_LABEL)
     
     if not label then
@@ -158,10 +158,10 @@ local function Initialize()
     savedVars = ZO_SavedVars:NewCharacterIdSettings("ActionBarLabelsSV", 1, nil, defaults)
     
     -- Register for weapon bar swap events
-    EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_ACTIVE_WEAPON_PAIR_CHANGED, OnWeaponPairChanged)
+    EVENT_MANAGER:RegisterForEvent(ACTIONBARLABELS, EVENT_ACTIVE_WEAPON_PAIR_CHANGED, OnWeaponPairChanged)
     
     -- Register for interface setting changes to update label position when attributes toggle
-    EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_INTERFACE_SETTING_CHANGED, OnInterfaceSettingChanged)
+    EVENT_MANAGER:RegisterForEvent(ACTIONBARLABELS, EVENT_INTERFACE_SETTING_CHANGED, OnInterfaceSettingChanged)
     
     -- Create options panel
     local panelData = {
@@ -218,8 +218,8 @@ local function OnPlayerActivated()
 end
 
 -- Wait for LibAddonMenu to load
-local function OnAddonLoaded(event, addonName)
-    if addonName == ADDON_NAME then
+local function OnAddonLoaded(event, ActionBarLabels)
+    if ActionBarLabels == ACTIONBARLABELS then
         -- Wait for LibAddonMenu-2.0 to be available
         if LAM then
             Initialize()
@@ -238,5 +238,5 @@ end
 ActionBarLabels = {}
 
 -- Register events
-EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_ADD_ON_LOADED, OnAddonLoaded)
-EVENT_MANAGER:RegisterForEvent(ADDON_NAME, EVENT_PLAYER_ACTIVATED, OnPlayerActivated)
+EVENT_MANAGER:RegisterForEvent(ACTIONBARLABELS, EVENT_ADD_ON_LOADED, OnAddonLoaded)
+EVENT_MANAGER:RegisterForEvent(ACTIONBARLABELS, EVENT_PLAYER_ACTIVATED, OnPlayerActivated)
